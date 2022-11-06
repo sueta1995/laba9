@@ -1,12 +1,15 @@
+# frozen_string_literal: true
+
+# class of controller
 class CalculatesController < ApplicationController
-  def new
-  end
+  def new; end
 
   def create
-    numbers = params.require(:calculates).permit(:numbers)[:numbers].split(' ')
-    
-    if valid?(numbers)
-      @result = calculating(numbers.collect { |x| x.to_i })
+    @numbers = params.require(:calculates).permit(:numbers)[:numbers].split(' ')
+
+    if valid?(@numbers)
+      @result = calculating(@numbers.collect(&:to_i))
+      @max_result = @result.max_by(&:length)
 
       render :results
     else
@@ -31,11 +34,14 @@ class CalculatesController < ApplicationController
     temp = []
 
     array.each_index do |x|
-      begin
-        array[x] < array[x+1] ? temp << array[x] : (temp << array[x]; result << temp; temp = [])
-      rescue
-        temp << array[x]; result << temp
+      temp << array[x]
+      if array[x] < array[x + 1]
+      else
+        result << temp
+        temp = []
       end
+    rescue StandardError
+      result << temp
     end
 
     result

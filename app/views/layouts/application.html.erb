@@ -8,13 +8,20 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" %>
+    <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" %>
   </head>
 
   <body>
-    <% if flash[:alert].present? %>
-      <strong><%= flash[:alert] %></strong>
-    <% end %>
+    <header></header>
+    <main class="container">
+      <% if flash[:alert].present? %>
+        <strong><%= flash[:alert] %></strong>
+      <% end %>
 
-    <%= yield %>
+      <%= yield %>
+    </main>
+    <footer></footer>
   </body>
 </html>
