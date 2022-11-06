@@ -19,7 +19,7 @@ class CalculatesController < ApplicationController
   private
 
   def valid?(array)
-    result = true
+    result = true if array.any?
 
     array.each { |x| result = false if x.scan(/[-0-9]/).length != x.length }
 
