@@ -42,6 +42,8 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+gem 'rails-controller-testing'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -69,4 +71,9 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+end
+
+# Run against this stable release
+group :development, :test do
+  gem 'rspec-rails', '~> 6.0.0'
 end

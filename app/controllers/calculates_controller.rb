@@ -7,8 +7,8 @@ class CalculatesController < ApplicationController
   def create
     @numbers = params.require(:calculates).permit(:numbers)[:numbers].split(' ')
 
-    if valid?(@numbers)
-      @result = calculating(@numbers.collect(&:to_i))
+    if ::CalculatesController.valid?(@numbers)
+      @result = ::CalculatesController.calculating(@numbers.collect(&:to_i))
       @max_result = @result.max_by(&:length)
 
       render :results
@@ -19,9 +19,7 @@ class CalculatesController < ApplicationController
     end
   end
 
-  private
-
-  def valid?(array)
+  def self.valid?(array)
     result = true if array.any?
 
     array.each { |x| result = false if x.scan(/[-0-9]/).length != x.length }
@@ -29,7 +27,7 @@ class CalculatesController < ApplicationController
     result
   end
 
-  def calculating(array)
+  def self.calculating(array)
     result = []
     temp = []
 
