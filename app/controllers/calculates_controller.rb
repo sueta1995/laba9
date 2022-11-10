@@ -15,7 +15,8 @@ class CalculatesController < ApplicationController
         format.html
         format.json do
           render json:
-          { type: @result.class.to_s, input: @numbers.collect(&:to_i), all_sequences: @result, max_sequence: @max_result }
+          { type: @result.class.to_s, input: @numbers.collect(&:to_i), all_sequences: @result,
+            max_sequence: @max_result }
         end
       end
     else
