@@ -2,7 +2,9 @@
 
 # class of controller
 class CalculatesController < ApplicationController
-  def new; end
+  def new
+    render layout: false
+  end
 
   def create
     @numbers = params[:numbers].split(' ')

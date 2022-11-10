@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: "calculates#new"
+
   get 'calculates/new'
   get 'calculates/create'
 

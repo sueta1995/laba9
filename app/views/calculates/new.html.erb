@@ -1,6 +1,6 @@
 <h3>Лабораторная работа 9</h3>
 
-<%= form_tag("/calculates/create.json", remote: true, :method => "get") do %>
+<%= form_tag("/calculates/create", :method => "get", id: 'calc_form') do %>
   <%= label_tag("Введите числа через пробел:") %><br><br>
   <%= text_field_tag(:numbers) %><br><br>
   <%= submit_tag("Вычислить") %>
