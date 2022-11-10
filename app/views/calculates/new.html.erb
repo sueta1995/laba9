@@ -1,7 +1,7 @@
-<h3>Лабораторная работа 8</h3>
+<h3>Лабораторная работа 9</h3>
 
-<%= form_with scope: :calculates, url: calculates_path, data: {turbo: false} do |form| %>
-  <%= form.label :numbers, 'Введите числа через пробел:' %><br><br>
-  <%= form.text_field :numbers, id: 'calculate-text-field' %><br><br>
-  <%= form.submit 'Вычислить' %><br><br>
+<%= form_tag("/calculates/create.json", remote: true, :method => "get") do %>
+  <%= label_tag("Введите числа через пробел:") %><br><br>
+  <%= text_field_tag(:numbers) %><br><br>
+  <%= submit_tag("Вычислить") %>
 <% end %>
