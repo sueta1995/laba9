@@ -3,7 +3,6 @@
 # class of controller
 class CalculatesController < ApplicationController
   def new
-    render layout: false
   end
 
   def create
@@ -14,17 +13,10 @@ class CalculatesController < ApplicationController
       @max_result = @result.max_by(&:length)
 
       respond_to do |format|
-        format.html
-        format.json do
-          render json:
-          { type: @result.class.to_s, input: @numbers.collect(&:to_i), all_sequences: @result,
-            max_sequence: @max_result }
-        end
+        format.html { render :new, status: :unprocessable_entity }
       end
     else
-      flash.now[:alert] = 'Введены не верные значения!'
-
-      render :new
+      redirect_to(root_path, alert: 'Invalid values')
     end
   end
 

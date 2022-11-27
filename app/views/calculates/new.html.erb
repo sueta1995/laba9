@@ -1,7 +1,14 @@
 <h3>Лабораторная работа 9</h3>
+<%= form_with url: '/calculates/create', method: :post, id: 'calc_form' do |form| %>
+  <%= form.label :numbers, "Введите числа через пробел:" %><br><br>
+  <%= form.text_field :numbers %><br><br>
+  <%= form.submit "Вычислить" %>
+<% end %>
 
-<%= form_tag("/calculates/create", :method => "get", id: 'calc_form') do %>
-  <%= label_tag("Введите числа через пробел:") %><br><br>
-  <%= text_field_tag(:numbers) %><br><br>
-  <%= submit_tag("Вычислить") %>
+<br>
+
+<%= turbo_frame_tag @numbers do %>
+  <% if @result.present? %>
+    <%= render 'results' %>
+  <% end %>
 <% end %>
