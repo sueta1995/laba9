@@ -17,7 +17,7 @@
     <header></header>
     <main class="container">
       <% if flash[:alert].present? %>
-        <strong><%= flash[:alert] %></strong>
+        <strong id="alert"><%= flash[:alert] %></strong>
       <% end %>
 
       <%= yield %>

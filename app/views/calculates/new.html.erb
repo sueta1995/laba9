@@ -2,7 +2,7 @@
 <%= form_with url: '/calculates/create', method: :post, id: 'calc_form' do |form| %>
   <%= form.label :numbers, "Введите числа через пробел:" %><br><br>
   <%= form.text_field :numbers %><br><br>
-  <%= form.submit "Вычислить" %>
+  <%= form.submit "Вычислить", id: 'submit' %>
 <% end %>
 
 <br>
