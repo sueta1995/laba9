@@ -7,8 +7,4 @@
 
 <br>
 
-<%= turbo_frame_tag @numbers do %>
-  <% if @result.present? %>
-    <%= render 'results' %>
-  <% end %>
-<% end %>
+<div id='result-container'></div>

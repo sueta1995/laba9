@@ -8,7 +8,8 @@ RSpec.describe 'Static content', type: :system do
 
     find('#submit').click
 
-    expect(find('#max-sequence')).to have_text('Наибольшая последовательность')
+    expect(find('#maxvalue_0')).to have_text('4')
+    expect(find('#maxvalue_1')).to have_text('213')
   end
 
   scenario 'invalid input' do
