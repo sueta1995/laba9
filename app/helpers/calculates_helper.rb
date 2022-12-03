@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
+# module for calculates controller
 module CalculatesHelper
-	def valid?(array)
+  def valid?(array)
     result = true if array.any?
 
     array.each { |x| result = false if x.scan(/[-0-9]/).length != x.length }
@@ -13,8 +16,7 @@ module CalculatesHelper
 
     array.each_index do |x|
       temp << array[x]
-      if array[x] < array[x + 1]
-      else
+      unless array[x] < array[x + 1]
         result << temp
         temp = []
       end
